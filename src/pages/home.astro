@@ -1,0 +1,17 @@
+---
+import { useStoryblokApi } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+
+const storyblokApi = useStoryblokApi()
+const { data } = await storyblokApi.get('cdn/stories/home', {
+  version: 'draft',
+})
+
+const story = data.story
+---
+
+<html lang="es">
+  <body style="background: #13151a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <StoryblokComponent blok={story.content} />
+  </body>
+</html>
