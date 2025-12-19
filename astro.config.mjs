@@ -10,6 +10,7 @@ export default defineConfig({
       components: {
         "page": "components/Page.astro",
         "name_block": "components/NameBlock.astro",
+        "stats_card": "components/StatsCard.astro",
       },
     }),
   ],

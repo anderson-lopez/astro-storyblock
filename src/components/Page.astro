@@ -5,10 +5,10 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 const { blok } = Astro.props
 ---
 
-<main {...storyblokEditable(blok)}>
+<div {...storyblokEditable(blok)} class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
   {
-    blok.body.map((nestedBlok) => {
-      return <StoryblokComponent blok={nestedBlok} />
+    blok.body?.map((blok) => {
+      return <StoryblokComponent blok={blok} />
     })
   }
-</main>
+</div>

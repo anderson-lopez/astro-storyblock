@@ -1,0 +1,23 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+
+interface Props {
+  blok: {
+    title: string;
+    value: string;
+    color: string;
+  }
+}
+
+const { blok } = Astro.props
+---
+
+<div {...storyblokEditable(blok)} class="bg-slate-800 p-6 rounded-xl border border-slate-700 shadow-lg">
+  <h3 class="text-slate-400 text-sm font-medium uppercase tracking-wider">{blok.title}</h3>
+  <div class="mt-2 flex items-baseline gap-2">
+    <span class="text-3xl font-bold text-white">{blok.value}</span>
+    <span class={`text-xs font-semibold px-2 py-1 rounded ${blok.color === 'blue' ? 'bg-blue-900 text-blue-300' : 'bg-green-900 text-green-300'}`}>
+      +12.5%
+    </span>
+  </div>
+</div>
