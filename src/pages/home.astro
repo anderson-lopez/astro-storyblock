@@ -12,8 +12,14 @@ const story = data.story
 ---
 
 <Layout title="Dashboard - Home">
-  <div class=" mx-auto">
-    <h1 class="text-3xl font-bold mb-8">Resumen General</h1>
+  <div class=" w-full">
+    <header class="fmb-10 pb-10">
+      <div class=" border-b border-slate-700 pb-6">
+        <h1 class="text-4xl font-extrabold text-white tracking-tight">Resumen General</h1>
+        <p class="text-slate-400 mt-2">Visualiza el rendimiento general de la plataforma, métricas de conversión y el estado de las operaciones en tiempo real.</p>
+      </div>
+    </header>
+    
     <StoryblokComponent blok={story.content} />
   </div>
 </Layout>

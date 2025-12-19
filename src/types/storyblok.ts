@@ -25,3 +25,10 @@ export interface PageBlok extends SbBlokData {
   component: "page";
   body: SbBlokData[];
 }
+
+export interface SettingsCardBlok extends SbBlokData {
+  component: "settings_card";
+  label: string;
+  value: string;
+  helperText?: string;
+}

@@ -1,0 +1,28 @@
+---
+import { storyblokEditable } from '@storyblok/astro'
+import type { SettingsCardBlok } from '../types/storyblok'
+
+interface Props {
+  blok: SettingsCardBlok;
+}
+
+const { blok } = Astro.props
+---
+
+<div 
+  {...storyblokEditable(blok)} 
+  class="col-span-full flex flex-col md:flex-row md:items-center justify-between py-5 border-b border-slate-500 hover:bg-slate-600/20 px-4 rounded-lg transition-colors group"
+>
+  <div class="flex-1">
+    <label class="block text-sm font-semibold text-white group-hover:text-blue-400 transition-colors">
+      {blok.label}
+    </label>
+    {blok.helperText && (
+      <p class="text-slate-500 text-xs mt-1 italic">{blok.helperText}</p>
+    )}
+  </div>
+  
+  <div class="mt-2 md:mt-0 text-slate-300 font-mono text-sm md:text-base bg-slate-900/50 px-3 py-1 rounded border border-slate-600">
+    {blok.value}
+  </div>
+</div>

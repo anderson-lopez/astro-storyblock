@@ -30,7 +30,7 @@ const getLinkClass = (path: string) => {
   </head>
   <body class="flex h-screen overflow-hidden">
     <aside class="w-64 bg-slate-800 border-r border-slate-700 hidden md:flex flex-col">
-      <div class="p-6 text-xl font-bold border-b border-slate-700 text-blue-400">
+      <div class="flex items-center px-6 text-xl font-bold border-b border-slate-700 text-blue-400 min-h-16">
         AdminPanel
       </div>
       <nav class="flex-1 p-4 space-y-2">
@@ -41,7 +41,7 @@ const getLinkClass = (path: string) => {
     </aside>
 
     <main class="flex-1 flex flex-col overflow-y-auto">
-      <header class="h-16 bg-slate-800 border-b border-slate-700 flex items-center justify-between px-8">
+      <header class="min-h-16 bg-slate-800 border-b border-slate-700 flex items-center justify-between px-8">
         <span class="text-slate-400">Prueba Técnica / Anderson Lopez</span>
         <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">AL</div>
       </header>

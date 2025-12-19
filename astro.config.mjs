@@ -13,6 +13,7 @@ export default defineConfig({
         "stats_card": "components/StatsCard.astro",
         "user_table": "components/UserTable.astro",
         "user_row": "components/UserRow.astro",
+        "settings_card": "components/SettingsCard.astro"
       },
     }),
   ],
