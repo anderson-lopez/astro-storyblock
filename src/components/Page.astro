@@ -1,14 +1,19 @@
 ---
 import { storyblokEditable } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+import type { PageBlok } from '../types/storyblok'
+
+interface Props {
+  blok: PageBlok;
+}
 
 const { blok } = Astro.props
 ---
 
 <div {...storyblokEditable(blok)} class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
   {
-    blok.body?.map((blok) => {
-      return <StoryblokComponent blok={blok} />
+    blok.body?.map((nestedBlok) => {
+      return <StoryblokComponent blok={nestedBlok} />
     })
   }
 </div>

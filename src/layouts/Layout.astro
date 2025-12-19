@@ -1,39 +1,53 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css'
+
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+
+const { pathname } = Astro.url;
+
+const getLinkClass = (path: string) => {
+  const baseClass = "block p-3 rounded transition ";
+  const activeClass = "bg-slate-700 text-white font-semibold";
+  const inactiveClass = "text-slate-400 hover:bg-slate-700 hover:text-white";
+  
+  return baseClass + (pathname === path ? activeClass : inactiveClass);
+};
+
 ---
 
 <!doctype html>
 <html lang="es" class="bg-slate-900 text-white">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>{title}</title>
-	</head>
-	<body class="flex h-screen overflow-hidden">
-		<aside class="w-64 bg-slate-800 border-r border-slate-700 hidden md:flex flex-col">
-			<div class="p-6 text-xl font-bold border-b border-slate-700 text-blue-400">
-				AdminPanel
-			</div>
-			<nav class="flex-1 p-4 space-y-2">
-				<a href="#" class="block p-3 rounded bg-slate-700 text-white">Dashboard</a>
-				<a href="#" class="block p-3 rounded hover:bg-slate-700 text-slate-400 transition">Usuarios</a>
-				<a href="#" class="block p-3 rounded hover:bg-slate-700 text-slate-400 transition">Ajustes</a>
-			</nav>
-		</aside>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="flex h-screen overflow-hidden">
+    <aside class="w-64 bg-slate-800 border-r border-slate-700 hidden md:flex flex-col">
+      <div class="p-6 text-xl font-bold border-b border-slate-700 text-blue-400">
+        AdminPanel
+      </div>
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="/home" class={getLinkClass('/home')}>Dashboard</a>
+        <a href="/users" class={getLinkClass('/users')}>Usuarios</a>
+        <a href="/settings" class={getLinkClass('/settings')}>Ajustes</a>
+      </nav>
+    </aside>
 
-		<main class="flex-1 flex flex-col overflow-y-auto">
-			<header class="h-16 bg-slate-800 border-b border-slate-700 flex items-center justify-between px-8">
-				<span class="text-slate-400">Prueba Técnica / Anderson Lopez</span>
-				<div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">AL</div>
-			</header>
-			<section class="p-8">
-				<slot />
-			</section>
-		</main>
-	</body>
+    <main class="flex-1 flex flex-col overflow-y-auto">
+      <header class="h-16 bg-slate-800 border-b border-slate-700 flex items-center justify-between px-8">
+        <span class="text-slate-400">Prueba Técnica / Anderson Lopez</span>
+        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">AL</div>
+      </header>
+      <section class="p-8">
+        <slot />
+      </section>
+    </main>
+  </body>
 </html>

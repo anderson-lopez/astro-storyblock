@@ -1,0 +1,25 @@
+---
+import { useStoryblokApi } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
+import Layout from '../layouts/Layout.astro'
+
+const storyblokApi = useStoryblokApi()
+const { data } = await storyblokApi.get('cdn/stories/users', {
+  version: 'published',
+})
+
+const story = data.story
+---
+
+<Layout title="Administración de Usuarios">
+  <div class="max-w-6xl mx-auto">
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+      <div>
+        <h1 class="text-4xl font-extrabold text-white tracking-tight">Gestión de Equipo</h1>
+        <p class="text-slate-400 mt-2">Administra los accesos y roles de los evaluadores técnicos.</p>
+      </div>
+    </header>
+    
+    <StoryblokComponent blok={story.content} />
+  </div>
+</Layout>
