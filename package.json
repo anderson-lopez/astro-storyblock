@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@storyblok/astro": "^7.3.7",
-    "astro": "^5.16.6"
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.6",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "storyblok-generate-ts": "^2.2.0"
   }
 }

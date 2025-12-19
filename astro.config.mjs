@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import { storyblok } from '@storyblok/astro'; // 1. Importar la integración
 
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineConfig({
   integrations: [
     storyblok({
@@ -11,4 +13,7 @@ export default defineConfig({
       },
     }),
   ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
